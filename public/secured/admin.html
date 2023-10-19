@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .loader {
+            margin: 0;
+            position: absolute;
+            top: 40%;
+            left: calc(50% - 80px);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+        }
+        
+        /* Safari */
+        @-webkit-keyframes spin {
+          0% { -webkit-transform: rotate(0deg); }
+          100% { -webkit-transform: rotate(360deg); }
+        }
+        
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body style="padding:20px;">
+    <div id="loader" style="height:calc(100vh - 50px); width:100wh; position:relative;">
+        <div class="loader"></div>
+    </div>
+    
+    <div id="body" style="display:none;">
+
+        <div>
+            <a href="" onclick="logout()">Logout</a>
+        </div>
+        <h2>Barangay Management System Dashboard</h2>
+        <hr>
+        <div style="height: 250;">
+
+            <table class="doc">
+                <tr>
+                    <th clss="doc"></th>
+                    <th class="doc">Label</th>
+                    <th class="doc">Value</th>
+                    <th class="doc">Price</th>
+                </tr>
+                
+            </table>
+        </div>
+        <br>
+        <div style="height: 250;background-color: grey;">
+
+        </div>
+    </div>
+
+    <script src="./js/admin.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Document</title>
+</head>
+<body style="padding: 20px;">
+    <h2>Welcome to BARANGAY 123</h2>
+    <p>Create an apointment to Barangay 123 to get documents</p>
+    <hr>
+    <br>
+    <label for="doc">Document type:</label>
+    <select name="doc">
+        <option value="cedula">Barangay Cedula</option>
+        <option value="clearance">Barangay Clearance</option>
+        <option value="indigency">Barangay Indigency</option>
+        <option value="residency">Certificate of Residency</option>
+    </select>
+
+    <br>
+    <br>
+    <label for="name">Requestor full name:</label>
+    <input type="text" name="name" style="width:400px; height:25px;">
+
+    <br>
+    <br>
+    <label for="dgender">Gender:</label>
+    <select name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+    <br>
+    <br>
+
+    <label for="date">Request date:</label>
+    <input type="date" name="date" id="date">
+    <br>
+    <br>
+    <label for="time">Request time:</label>
+    <!-- <input type="time" name="time"> -->
+    <select name="time" id="time">
+        <option value="8">08:00 am</option>
+        <option value="9">09:00 am</option>
+        <option value="10">10:00 am</option>
+        <option value="11">11:00 am</option>
+        <option value="13">01:00 pm</option>
+        <option value="14">02:00 pm</option>
+        <option value="15">03:00 pm</option>
+        <option value="16">04:00 pm</option>
+    </select>
+    <br>
+    <br>
+    <br>
+    <input type="button" value="Submit">
+    <br>
+    <p>
+        <b>Notes:</b>
+        <br>Please bring a valid id of the requestor to claim the document. (For verification purposes).
+        <br>Requestor must be a residence of this barangay in the past 2 years.
+    </p>
+
+    <script src="./js/lib/moment.js"></script>
+    <script src="./js/request.js"></script>
+</body>
+</html>
