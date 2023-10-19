@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body style="padding: 20px;">
+    <h2>Document List</h2>
+    <hr>
+    <div style="height: 250;">
+
+        <table class="doc">
+            <tr>
+                <th clss="doc" style="display:none;">#</th>
+                <th class="doc">Label</th>
+                <th class="doc">Value</th>
+                <th class="doc">Price</th>
+            </tr>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script src="./js/utils.js"></script>
+    <script src="./js/documents.js"></script>
+</body>
+</html>

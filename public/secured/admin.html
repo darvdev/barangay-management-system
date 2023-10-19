@@ -4,6 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link rel="stylesheet" href="css/modal.css">
+
     <style>
         .loader {
             margin: 0;
@@ -32,22 +34,6 @@
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
         }
-
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
     </style>
 </head>
 <body style="padding:20px;">
@@ -62,24 +48,15 @@
         </div>
         <h2>Barangay Management System Dashboard</h2>
         <hr>
-        <div style="height: 250;">
-
-            <table class="doc">
-                <tr>
-                    <th clss="doc"></th>
-                    <th class="doc">Label</th>
-                    <th class="doc">Value</th>
-                    <th class="doc">Price</th>
-                </tr>
-                
-            </table>
-        </div>
+        <button onclick="openWindow({url: '/secured/documents.html'})">Open Documents</button>
+        <hr>
         <br>
         <div style="height: 250;background-color: grey;">
 
         </div>
     </div>
 
+    <script src="./js/utils.js"></script>
     <script src="./js/admin.js"></script>
 
 </body>

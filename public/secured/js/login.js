@@ -9,10 +9,7 @@ const login = function() {
 
     fetch(baseUrl + '/secured/login', {
         method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-          },
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify({'username': username.value, 'password': password.value}),
     }).then(async (res)=>{
 
