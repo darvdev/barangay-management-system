@@ -16,7 +16,7 @@ const getUser = async function(username, password) {
     }).catch((error) => {
         db.close();
         console.log('Error getUser:', error);
-        throw error;
+        return res.status(500).json({status: 'error', message: error.toString()});
     });
 }
 
@@ -35,7 +35,43 @@ const getDocs = async function(req, res) {
     }).catch((error) => {
         db.close();
         console.log('Error getDocs:', error);
-        return res.status(500).send(error);
+        return res.status(500).json({status: 'error', message: error.toString()});
+    });
+    
+    
+    
+}
+
+const postDoc = async function(req, res) {
+    
+    const body = req.body;
+
+    if (!body) {
+        return res.status(400).send({'status': 'error', 'message': 'Payload is required'});
+    }
+
+    console.log(body);
+
+    const created_date = (new Date()).toISOString();
+
+    console.log('created_date', created_date);
+        
+    const db = await AsyncDatabase.open('./server/db.sqlite');
+    const query = `INSERT INTO requests (created_date, type, name, gender, date, time, price) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+
+    return db.run(query, [created_date, body.type, body.name, body.gender, body.date, body.time, body.price]).then((data) => {
+        console.log('postDoc:', data);
+        db.close();
+
+        if (data) {
+            return res.status(200).json({'status': 'ok', 'message': 'You document request has been recorded.', 'data': data});
+        } else {
+            return res.status(400).json({'status': 'error', 'message': 'Cannot created request', 'data': data});
+        }
+    }).catch((error) => {
+        db.close();
+        console.log('Error postDoc:', error);
+        return res.status(500).json({status: 'error', message: error.toString()});
     });
     
     
@@ -44,4 +80,4 @@ const getDocs = async function(req, res) {
 
 
 
-module.exports = {users, getUser, getDocs};
+module.exports = {users, getUser, getDocs, postDoc};

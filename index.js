@@ -2,15 +2,19 @@ const path = require("path");
 var bodyParser = require('body-parser');
 const util = require('util');
 const express = require("express");
+const cors = require('cors')({origin: true});
 
-const { getDocs } = require("./server/db.js");
+
+const { getDocs, postDoc } = require("./server/db.js");
 const { login, verifyToken } = require("./server/auth.js");
 
 const app = express();
+app.use(cors);
 app.use(express.static(path.join(__dirname, "public")));
 
 const jsonParser = bodyParser.json();
 
+app.post("/request", jsonParser, postDoc);
 app.get("/secured/docs", getDocs);
 
 
