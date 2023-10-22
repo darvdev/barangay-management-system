@@ -42,7 +42,7 @@ const getDocs = async function(req, res) {
     
 }
 
-const postDoc = async function(req, res) {
+const postRequest = async function(req, res) {
     
     const body = req.body;
 
@@ -60,7 +60,7 @@ const postDoc = async function(req, res) {
     const query = `INSERT INTO requests (created_date, type, name, gender, date, time, price) VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
     return db.run(query, [created_date, body.type, body.name, body.gender, body.date, body.time, body.price]).then((data) => {
-        console.log('postDoc:', data);
+        console.log('postRequest:', data);
         db.close();
 
         if (data) {
@@ -70,14 +70,60 @@ const postDoc = async function(req, res) {
         }
     }).catch((error) => {
         db.close();
-        console.log('Error postDoc:', error);
+        console.log('Error postRequest:', error);
         return res.status(500).json({status: 'error', message: error.toString()});
     });
-    
-    
     
 }
 
 
+const getRequest = async function(req, res) {
+    const db = await AsyncDatabase.open('./server/db.sqlite');
+    const query = `SELECT * FROM requests`;
 
-module.exports = {users, getUser, getDocs, postDoc};
+    return db.all(query).then((data) => {
+        console.log('getRequest:', data);
+        db.close();
+        return res.status(200).json({data: data});
+    }).catch((error) => {
+        db.close();
+        console.log('Error getRequest:', error);
+        return res.status(500).json({status: 'error', message: error.toString()});
+    });
+}
+
+const delRequest = async function(req, res) {
+
+    const id = req.params.id;
+
+    console.log('delete id:', id);
+
+    
+    const db = await AsyncDatabase.open('./server/db.sqlite');
+    const deleteQuery = `DELETE FROM requests WHERE id=(?)`;
+
+    return db.run(deleteQuery, id).then((_) => {
+        console.log('delRequest:', _);
+
+        const getQuery = `SELECT * FROM requests`;
+
+        return db.all(getQuery).then((data) => {
+            console.log('delRequest get:', data);
+            db.close();
+            return res.status(200).json({data: data});
+        }).catch((error) => {
+            db.close();
+            console.log('Error delRequest get:', error);
+            return res.status(500).json({status: 'error', message: error.toString()});
+        });
+    }).catch((error) => {
+        db.close();
+        console.log('Error delRequest:', error);
+        return res.status(500).json({status: 'error', message: error.toString()});
+    });
+
+}
+
+
+
+module.exports = {users, getUser, getDocs, postRequest, getRequest, delRequest};
