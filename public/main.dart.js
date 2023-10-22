@@ -8611,7 +8611,7 @@ qO:function qO(a){this.a=a},
 YG:function YG(){},
 ou:function ou(a){this.a=a},
 QG:function QG(a,b){var _=this
-_.r=a
+_.f=a
 _.a=null
 _.b=b
 _.c=null},
@@ -8635,7 +8635,7 @@ Di:function Di(a,b,c,d){var _=this
 _.d=a
 _.e=b
 _.f=c
-_.a=_.w=null
+_.a=_.r=null
 _.b=d
 _.c=null},
 akp:function akp(a){this.a=a},
@@ -8649,8 +8649,8 @@ akl:function akl(){},
 akm:function akm(){},
 pM:function pM(a){this.a=a},
 Ed:function Ed(a,b,c){var _=this
-_.r=a
-_.w=b
+_.f=a
+_.r=b
 _.a=null
 _.b=c
 _.c=null},
@@ -44606,16 +44606,18 @@ $S:0}
 A.ou.prototype={
 ad(){return new A.QG([],B.i)}}
 A.QG.prototype={
-jX(a){var s=0,r=A.T(t.z),q=this
+jX(a){var s=0,r=A.T(t.z),q=this,p
 var $async$jX=A.U(function(b,c){if(b===1)return A.Q(c,r)
-while(true)switch(s){case 0:s=2
-return A.W(A.atO(A.dY("http://localhost:8000/secured/docs",0,null)).bp(new A.aiJ(q),t.P).fV(new A.aiK(q)),$async$jX)
+while(true)switch(s){case 0:p=window.location.protocol
+p.toString
+s=2
+return A.W(A.atO(A.dY(p+"//"+A.i(window.location.hostname)+":8000/secured/docs",0,null)).bp(new A.aiJ(q),t.P).fV(new A.aiK(q)),$async$jX)
 case 2:return A.R(null,r)}})
 return A.S($async$jX,r)},
 aA(){this.jX(0)
 this.aO()},
 G(a){var s=null,r=t.p,q=A.GE(A.a([A.jG(B.kw,s,s,new A.aiA(),B.k)],r),s,B.kx),p=A.a([B.ay,A.dF(A.a([B.DR,A.jG(B.SI,B.cz,s,new A.aiB(),B.k),B.cj,A.jG(B.Sw,B.h2,s,new A.aiC(),B.k)],r),B.z,B.t,B.v),B.ay,B.b4,B.ay,A.by(s,A.dF(A.a([A.cJ(A.dR(!1,s,!0,B.ja,s,!0,s,s,s,s,s,s,s,s,s,s,new A.aiD(),s,s,s,s,s),50,50),B.DO,B.DP,B.mw],r),B.z,B.t,B.v),B.l,B.iC,s,s,s,50,s,s,s,s,s)],r)
-if(J.jc(this.r))p.push(A.dz(A.awP(new A.aiE(this),J.bt(this.r),new A.aiF()),1))
+if(J.jc(this.f))p.push(A.dz(A.awP(new A.aiE(this),J.bt(this.f),new A.aiF()),1))
 return A.pS(q,A.dF(A.a([B.kJ,A.dz(new A.c_(B.bx,A.dq(p,B.b3,B.t,B.v),s),1)],r),B.z,B.t,B.v))}}
 A.aiJ.prototype={
 $1(a){var s,r,q,p,o="charset",n=a.b
@@ -44633,7 +44635,7 @@ $S:43}
 A.aiH.prototype={
 $0(){var s=J.an(this.b,"data")
 if(s==null)s=[]
-this.a.r=s},
+this.a.f=s},
 $S:0}
 A.aiI.prototype={
 $0(){J.an(this.b,"message")},
@@ -44664,7 +44666,7 @@ A.aiF.prototype={
 $2(a,b){return B.b4},
 $S:175}
 A.aiE.prototype={
-$2(a,b){var s=null,r=J.an(this.a.r,b),q=J.ax(r)
+$2(a,b){var s=null,r=J.an(this.a.f,b),q=J.ax(r)
 return A.cJ(A.dF(A.a([A.cJ(A.dR(!1,s,!0,B.ja,s,!0,s,s,s,s,s,s,s,s,s,s,new A.aiz(),s,s,s,s,s),50,50),A.dz(A.ck(A.i(q.h(r,"label")),s,s,s,B.ag,s,s),1),A.dz(A.ck(A.i(q.h(r,"value")),s,s,s,B.ag,s,s),1),A.dz(A.ck(A.i(q.h(r,"price")),s,s,s,B.ag,s,s),1)],t.p),B.z,B.t,B.v),40,s)},
 $S:176}
 A.aiz.prototype={
@@ -44673,27 +44675,29 @@ $S:0}
 A.pa.prototype={
 ad(){return new A.Di(new A.b_(null,t.am),A.NW(""),A.NW(""),B.i)}}
 A.Di.prototype={
-uh(){var s=0,r=A.T(t.z),q,p=this,o
+uh(){var s=0,r=A.T(t.z),q,p=this,o,n
 var $async$uh=A.U(function(a,b){if(a===1)return A.Q(b,r)
-while(true)switch(s){case 0:o=p.d.gL()
-if((o==null?null:o.Ah())===!1){s=1
+while(true)switch(s){case 0:n=p.d.gL()
+if((n==null?null:n.Ah())===!1){s=1
 break}p.a8(new A.akp(p))
-o=t.z
-A.xu($.b5(),B.fm,!1,o)
+n=t.z
+A.xu($.b5(),B.fm,!1,n)
 s=3
-return A.W(A.oP(B.mn,null,o),$async$uh)
-case 3:o=t.N
+return A.W(A.oP(B.mn,null,n),$async$uh)
+case 3:n=window.location.protocol
+n.toString
+o=t.N
 s=4
-return A.W(A.au_(A.dY("http://localhost:8000/secured/login",0,null),B.a0.yz(A.aA(["username",p.e.a.a,"password",p.f.a.a],o,o),null),A.aA(["Content-Type","application/json"],o,o)).bp(new A.akq(p),t.P).fV(new A.akr(p)),$async$uh)
+return A.W(A.au_(A.dY(n+"//"+A.i(window.location.hostname)+":8000/secured/login",0,null),B.a0.yz(A.aA(["username",p.e.a.a,"password",p.f.a.a],o,o),null),A.aA(["Content-Type","application/json"],o,o)).bp(new A.akq(p),t.P).fV(new A.akr(p)),$async$uh)
 case 4:case 1:return A.R(q,r)}})
 return A.S($async$uh,r)},
-G(a){var s=this,r=null,q=A.a([B.Sx,B.ay,A.O1(!1,s.e,B.EU,r,r,!1,r,r,new A.akl()),B.ay,A.O1(!1,s.f,B.ET,r,r,!0,r,r,new A.akm())],t.p),p=s.w
+G(a){var s=this,r=null,q=A.a([B.Sx,B.ay,A.O1(!1,s.e,B.EU,r,r,!1,r,r,new A.akl()),B.ay,A.O1(!1,s.f,B.ET,r,r,!0,r,r,new A.akm())],t.p),p=s.r
 if(p!=null&&p!==""){p.toString
 q.push(new A.c_(B.DC,A.ck(p,r,r,r,B.yx,B.hD,r),r))}q.push(B.ay)
 q.push(A.jG(B.Sr,B.cz,r,s.gako(),B.k))
 return A.pS(r,A.by(B.x,A.by(B.x,A.awn(r,A.dq(q,B.z,B.td,B.v),s.d),B.l,r,r,r,r,r,r,r,r,r,350),B.l,r,r,r,r,r,r,r,r,r,r))}}
 A.akp.prototype={
-$0(){this.a.w=null},
+$0(){this.a.r=null},
 $S:0}
 A.akq.prototype={
 $1(a){var s,r,q,p=null,o="charset",n=a.b
@@ -44714,7 +44718,7 @@ n.a8(new A.ako(n,q))
 A.rM($.b5(),!0,!1,p,p)}},
 $S:43}
 A.ako.prototype={
-$0(){this.a.w=J.an(this.b,"message")},
+$0(){this.a.r=J.an(this.b,"message")},
 $S:0}
 A.akr.prototype={
 $1(a){var s
@@ -44724,7 +44728,7 @@ s.a8(new A.akn(s,a))
 A.rM($.b5(),!0,!1,null,null)},
 $S:7}
 A.akn.prototype={
-$0(){this.a.w=J.cW(this.b)},
+$0(){this.a.r=J.cW(this.b)},
 $S:0}
 A.akl.prototype={
 $1(a){return a===""?"This field is required":null},
@@ -44735,47 +44739,53 @@ $S:67}
 A.pM.prototype={
 ad(){return new A.Ed([],[],B.i)}}
 A.Ed.prototype={
-jX(a){var s=0,r=A.T(t.z),q=this
+jX(a){var s=0,r=A.T(t.z),q=this,p
 var $async$jX=A.U(function(b,c){if(b===1)return A.Q(c,r)
-while(true)switch(s){case 0:s=2
-return A.W(A.atO(A.dY("http://localhost:8000/secured/requests",0,null)).bp(new A.amE(q),t.P).fV(new A.amF(q)),$async$jX)
+while(true)switch(s){case 0:p=window.location.protocol
+p.toString
+s=2
+return A.W(A.atO(A.dY(p+"//"+A.i(window.location.hostname)+":8000/secured/requests",0,null)).bp(new A.amE(q),t.P).fV(new A.amF(q)),$async$jX)
 case 2:return A.R(null,r)}})
 return A.S($async$jX,r)},
-yj(){var s=0,r=A.T(t.z),q=this,p
+yj(){var s=0,r=A.T(t.z),q=this,p,o
 var $async$yj=A.U(function(a,b){if(a===1)return A.Q(b,r)
-while(true)switch(s){case 0:p=$.b5()
-A.xu(p,B.fm,!1,t.z)
+while(true)switch(s){case 0:o=$.b5()
+A.xu(o,B.fm,!1,t.z)
+p=window.location.protocol
+p.toString
 s=2
-return A.W(A.aBZ(A.dY("http://localhost:8000/secured/request/"+A.i(B.b.gT(q.w)),0,null)).bp(new A.amz(q),t.P).fV(new A.amA()),$async$yj)
-case 2:A.rM(p,!0,!1,null,null)
+return A.W(A.aBZ(A.dY(p+"//"+A.i(window.location.hostname)+":8000/secured/request/"+A.i(B.b.gT(q.r)),0,null)).bp(new A.amz(q),t.P).fV(new A.amA()),$async$yj)
+case 2:A.rM(o,!0,!1,null,null)
 return A.R(null,r)}})
 return A.S($async$yj,r)},
-zF(){var s=0,r=A.T(t.z),q,p=this,o,n,m,l,k,j,i,h
+zF(){var s=0,r=A.T(t.z),q,p=this,o,n,m,l,k,j,i,h,g
 var $async$zF=A.U(function(a,b){if(a===1)return A.Q(b,r)
-while(true)switch(s){case 0:h=A.aHt(p.r,new A.amH(p))
-if(h==null){s=1
+while(true)switch(s){case 0:g=A.aHt(p.f,new A.amH(p))
+if(g==null){s=1
 break}o=new A.aT(Date.now(),!1)
-n=J.an(h,"name")
+n=J.an(g,"name")
 m=A.cx(o)
 l=A.avA("MMMM").tP(o)
 k=$.b5()
 j=t.z
 A.xu(k,B.fm,!1,j)
-i=t.N
+i=window.location.protocol
+i.toString
+h=t.N
 s=3
-return A.W(A.au_(A.dY("http://localhost:8000/secured/request/print",0,null),B.a0.yz(A.aA(["name",n,"day",m,"month",l],i,j),null),A.aA(["Content-Type","application/json"],i,i)).bp(new A.amI(p,o,m,n,h),t.P).fV(new A.amJ()),$async$zF)
+return A.W(A.au_(A.dY(i+"//"+A.i(window.location.hostname)+":8000/secured/request/print",0,null),B.a0.yz(A.aA(["name",n,"day",m,"month",l],h,j),null),A.aA(["Content-Type","application/json"],h,h)).bp(new A.amI(p,o,m,n,g),t.P).fV(new A.amJ()),$async$zF)
 case 3:A.rM(k,!0,!1,null,null)
 case 1:return A.R(q,r)}})
 return A.S($async$zF,r)},
 aA(){this.jX(0)
 this.aO()},
-G(a){var s,r=this,q=null,p=t.p,o=A.GE(A.a([A.jG(B.kw,q,q,new A.amu(),B.k)],p),q,B.kx),n=r.w.length,m=n!==0,l=!m||n>1?q:r.galD()
+G(a){var s,r=this,q=null,p=t.p,o=A.GE(A.a([A.jG(B.kw,q,q,new A.amu(),B.k)],p),q,B.kx),n=r.r.length,m=n!==0,l=!m||n>1?q:r.galD()
 l=A.jG(A.ck("Print",q,q,q,A.eE(q,q,!m||n>1?B.co:B.k,q,q,q,q,q,q,q,q,q,q,q,q,q,q,!0,q,q,q,q,q,q,q,q),q,q),B.d6,B.fh,l,B.k)
-n=r.w.length
+n=r.r.length
 m=n!==0
 s=!m||n>1?q:r.gah_()
 l=A.a([B.ay,A.dF(A.a([B.DU,l,B.cj,A.jG(A.ck("Delete",q,q,q,A.eE(q,q,!m||n>1?B.co:B.k,q,q,q,q,q,q,q,q,q,q,q,q,q,q,!0,q,q,q,q,q,q,q,q),q,q),B.h2,B.fh,s,B.k)],p),B.z,B.t,B.v),B.ay,B.b4,B.ay,A.by(q,A.dF(A.a([A.cJ(A.dR(!1,q,!0,B.ja,q,!0,q,q,q,q,q,q,q,q,q,q,new A.amv(),q,q,q,q,q),50,50),B.DT,B.DM,B.DN,B.DS,B.DQ,B.mw],p),B.z,B.t,B.v),B.l,B.iC,q,q,q,50,q,q,q,q,q)],p)
-if(J.jc(r.r))l.push(A.dz(A.awP(new A.amw(r),J.bt(r.r),new A.amx()),1))
+if(J.jc(r.f))l.push(A.dz(A.awP(new A.amw(r),J.bt(r.f),new A.amx()),1))
 return A.pS(o,A.dF(A.a([B.kJ,A.dz(new A.c_(B.bx,A.dq(l,B.b3,B.t,B.v),q),1)],p),B.z,B.t,B.v))}}
 A.amE.prototype={
 $1(a){var s,r,q,p,o="charset",n=a.b
@@ -44793,7 +44803,7 @@ $S:43}
 A.amC.prototype={
 $0(){var s=J.an(this.b,"data")
 if(s==null)s=[]
-this.a.r=s},
+this.a.f=s},
 $S:0}
 A.amD.prototype={
 $0(){J.an(this.b,"message")},
@@ -44821,13 +44831,13 @@ $S:43}
 A.amy.prototype={
 $0(){var s=J.an(this.b,"data")
 if(s==null)s=[]
-this.a.r=s},
+this.a.f=s},
 $S:0}
 A.amA.prototype={
 $1(a){A.bO("Error del: "+A.i(a))},
 $S:7}
 A.amH.prototype={
-$1(a){return J.d(J.an(a,"id"),B.b.gT(this.a.w))},
+$1(a){return J.d(J.an(a,"id"),B.b.gT(this.a.r))},
 $S:86}
 A.amI.prototype={
 $1(a){return this.VN(a)},
@@ -44874,7 +44884,7 @@ A.amx.prototype={
 $2(a,b){return B.b4},
 $S:175}
 A.amw.prototype={
-$2(a,b){var s=null,r=this.a,q=J.an(r.r,b),p=J.ax(q),o=p.h(q,"id"),n=B.b.A(r.w,o),m=n?B.Es:B.mS
+$2(a,b){var s=null,r=this.a,q=J.an(r.f,b),p=J.ax(q),o=p.h(q,"id"),n=B.b.A(r.r,o),m=n?B.Es:B.mS
 return A.cJ(A.dF(A.a([A.cJ(A.dR(!1,s,!0,A.Jz(m,n?B.cz:B.cf,s,20),s,!0,s,s,s,s,s,s,s,s,s,s,new A.amt(r,n,o),s,s,s,s,s),50,50),A.dz(A.ck(A.i(p.h(q,"date")),s,s,s,B.ag,s,s),1),A.dz(A.ck(A.i(p.h(q,"time")),s,s,s,B.ag,s,s),1),A.dz(A.ck(A.i(p.h(q,"name")),s,s,s,B.ag,s,s),1),A.dz(A.ck(A.i(p.h(q,"gender")),s,s,s,B.ag,s,s),1),A.dz(A.ck(A.i(p.h(q,"type")),s,s,s,B.ag,s,s),1),A.dz(A.ck(A.i(p.h(q,"price")),s,s,s,B.ag,s,s),1)],t.p),B.z,B.t,B.v),40,s)},
 $S:176}
 A.amt.prototype={
@@ -44883,9 +44893,9 @@ s.a8(new A.ams(s,this.b,this.c))},
 $S:0}
 A.ams.prototype={
 $0(){var s,r=this.a,q=this.c
-if(this.b)B.b.D(r.w,q)
+if(this.b)B.b.D(r.r,q)
 else{s=[]
-r.w=s
+r.r=s
 s.push(q)}},
 $S:0}
 A.ON.prototype={
@@ -44923,10 +44933,12 @@ $S:7}
 A.A0.prototype={
 ad(){return new A.Ec(A.NW(null),A.NW(null),[],B.i)}}
 A.Ec.prototype={
-vd(){var s=0,r=A.T(t.z),q=this
+vd(){var s=0,r=A.T(t.z),q=this,p
 var $async$vd=A.U(function(a,b){if(a===1)return A.Q(b,r)
-while(true)switch(s){case 0:s=2
-return A.W(A.atO(A.dY("http://localhost:8000/secured/docs",0,null)).bp(new A.amk(q),t.P).fV(new A.aml(q)),$async$vd)
+while(true)switch(s){case 0:p=window.location.protocol
+p.toString
+s=2
+return A.W(A.atO(A.dY(p+"//"+A.i(window.location.hostname)+":8000/secured/docs",0,null)).bp(new A.amk(q),t.P).fV(new A.aml(q)),$async$vd)
 case 2:return A.R(null,r)}})
 return A.S($async$vd,r)},
 mn(a){var s=0,r=A.T(t.z),q,p=this,o,n,m,l,k,j
@@ -44938,7 +44950,9 @@ break}p.a8(new A.amp(p))
 o=$.b5()
 n=t.z
 A.xu(o,B.fm,!1,n)
-m=A.dY("http://localhost:8000/request",0,null)
+m=window.location.protocol
+m.toString
+m=A.dY(m+"//"+A.i(window.location.hostname)+":8000/request",0,null)
 l=t.N
 k=A.aA(["Content-Type","application/json"],l,l)
 s=3
