@@ -3,14 +3,13 @@ const {AsyncDatabase } = require("promised-sqlite3");
 const users = [];
 
 const getUser = async function(username, password) {
-
     console.log('getUser:', `${username}, ${password}`);
 
     const db = await AsyncDatabase.open('./server/db.sqlite');
     const query = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;
 
     return db.get(query).then((data) => {
-        console.log('getUser:', data);
+        console.log('getUser success:', data);
         db.close();
         return data ?? null;
     }).catch((error) => {
@@ -24,12 +23,13 @@ const getUser = async function(username, password) {
 
 const getDocs = async function(req, res) {
     // const token = req.headers['x-bsm-token'];
+    console.log('getDocs');
     
     const db = await AsyncDatabase.open('./server/db.sqlite');
     const query = `SELECT * FROM documents`;
 
     return db.all(query).then((data) => {
-        console.log('getDocs:', data);
+        console.log('getDocs success:', data);
         db.close();
         return res.status(200).json({data: data});
     }).catch((error) => {
@@ -37,30 +37,70 @@ const getDocs = async function(req, res) {
         console.log('Error getDocs:', error);
         return res.status(500).json({status: 'error', message: error.toString()});
     });
-    
-    
-    
+     
 }
 
-const postRequest = async function(req, res) {
-    
+const postDoc = async function(req, res) {
     const body = req.body;
+    console.log('postDoc:', body);
+
+    if (!body) {
+        return res.status(400).send({'status': 'error', 'message': 'Payload is required'});
+    }
+        
+    const db = await AsyncDatabase.open('./server/db.sqlite');
+    const query = `INSERT INTO documents (value, label, price) VALUES (?, ?, ?)`;
+
+    return db.run(query, [body.value, body.label, body.price]).then((data) => {
+        console.log('postDoc success:', data);
+        db.close();
+        return res.status(200).json({status: 'ok', message: 'Record has been saved.'});
+    }).catch((error) => {
+        db.close();
+        console.log('Error postDoc:', error);
+        return res.status(500).json({status: 'error', message: error.toString()});
+    });
+     
+}
+
+const delDoc = async function(req, res) {
+
+    const id = req.params.id;
+
+    console.log('delDoc:', id);
+
+    
+    const db = await AsyncDatabase.open('./server/db.sqlite');
+    const deleteQuery = `DELETE FROM documents WHERE id=(?)`;
+
+    return db.run(deleteQuery, id).then((_) => {
+        console.log('delDoc success:', _);
+        db.close();
+        return getDocs(req, res);
+    }).catch((error) => {
+        db.close();
+        console.log('Error delDoc:', error);
+        return res.status(500).json({status: 'error', message: error.toString()});
+    });
+}
+
+
+const postRequest = async function(req, res) {
+
+    const body = req.body;
+    console.log('postRequest:', body);
 
     if (!body) {
         return res.status(400).send({'status': 'error', 'message': 'Payload is required'});
     }
 
-    console.log(body);
-
     const created_date = (new Date()).toISOString();
-
-    console.log('created_date', created_date);
         
     const db = await AsyncDatabase.open('./server/db.sqlite');
     const query = `INSERT INTO requests (created_date, type, name, gender, date, time, price) VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
     return db.run(query, [created_date, body.type, body.name, body.gender, body.date, body.time, body.price]).then((data) => {
-        console.log('postRequest:', data);
+        console.log('postRequest success:', data);
         db.close();
 
         if (data) {
@@ -78,11 +118,13 @@ const postRequest = async function(req, res) {
 
 
 const getRequest = async function(req, res) {
+    console.log('getRequest');
+
     const db = await AsyncDatabase.open('./server/db.sqlite');
     const query = `SELECT * FROM requests`;
 
     return db.all(query).then((data) => {
-        console.log('getRequest:', data);
+        console.log('getRequest success:', data);
         db.close();
         return res.status(200).json({data: data});
     }).catch((error) => {
@@ -96,34 +138,23 @@ const delRequest = async function(req, res) {
 
     const id = req.params.id;
 
-    console.log('delete id:', id);
+    console.log('delRequest:', id);
 
     
     const db = await AsyncDatabase.open('./server/db.sqlite');
     const deleteQuery = `DELETE FROM requests WHERE id=(?)`;
 
     return db.run(deleteQuery, id).then((_) => {
-        console.log('delRequest:', _);
-
-        const getQuery = `SELECT * FROM requests`;
-
-        return db.all(getQuery).then((data) => {
-            console.log('delRequest get:', data);
-            db.close();
-            return res.status(200).json({data: data});
-        }).catch((error) => {
-            db.close();
-            console.log('Error delRequest get:', error);
-            return res.status(500).json({status: 'error', message: error.toString()});
-        });
+        console.log('delRequest success:', _);
+        db.close();
+        return getRequest(req, res);
     }).catch((error) => {
         db.close();
         console.log('Error delRequest:', error);
         return res.status(500).json({status: 'error', message: error.toString()});
     });
-
 }
 
 
 
-module.exports = {users, getUser, getDocs, postRequest, getRequest, delRequest};
+module.exports = {users, getUser, getDocs, delDoc, postDoc, postRequest, getRequest, delRequest};

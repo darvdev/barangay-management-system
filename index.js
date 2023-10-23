@@ -5,7 +5,7 @@ const express = require("express");
 const cors = require('cors')({origin: true});
 
 const { login, verifyToken } = require("./server/auth.js");
-const { getDocs, postRequest, getRequest, delRequest } = require("./server/db.js");
+const { getDocs, postDoc, delDoc, postRequest, getRequest, delRequest } = require("./server/db.js");
 const { print } = require("./server/print.js");
 
 
@@ -14,17 +14,29 @@ app.use(cors);
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 
+//Public
 app.post("/request", postRequest);
-
 app.get("/secured/docs", getDocs);
+
+
+
+
+
+//Admin
+
 app.get("/secured/requests", getRequest);
 
+app.post("/secured/doc", postDoc);
+app.post("/secured/request/print", print);
 
+app.delete("/secured/doc/:id", delDoc);
 app.delete("/secured/request/:id", delRequest);
 
+//Auth
 app.post("/secured/verifyToken", verifyToken);
 app.post("/secured/login", login);
-app.post("/secured/request/print", print);
+
+
 
 
 // app.get("/", (req, res) => res.sendFile(path.join(__dirname, "public/index.html")));
