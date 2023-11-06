@@ -1,4 +1,5 @@
 var html_to_pdf = require('html-pdf-node');
+const { AsyncDatabase } = require("promised-sqlite3");
 const fs = require('fs');
 
 const print = async function(req, res) {
@@ -37,12 +38,19 @@ const print = async function(req, res) {
     });
 
 
+    const query = 'UPDATE requests SET status=?, completed_on=? WHERE id=?';
+
+    const db = await AsyncDatabase.open('./server/db.sqlite');
+
+    const result = await db.run(query, ['printed', (new Date()).toISOString(), body.id]);
+
+    console.log('print result:', result);
+
     return res.status(200).json({data: data});
-    
 }
 
 
 
 
 
-module.exports = {print};
+module.exports = { print };

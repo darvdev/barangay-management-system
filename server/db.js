@@ -84,7 +84,6 @@ const delDoc = async function(req, res) {
     });
 }
 
-
 const postRequest = async function(req, res) {
 
     const body = req.body;
@@ -97,9 +96,9 @@ const postRequest = async function(req, res) {
     const created_date = (new Date()).toISOString();
         
     const db = await AsyncDatabase.open('./server/db.sqlite');
-    const query = `INSERT INTO requests (created_date, type, name, gender, date, time, price) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+    const query = `INSERT INTO requests (created_date, type, name, gender, date, time, price, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
 
-    return db.run(query, [created_date, body.type, body.name, body.gender, body.date, body.time, body.price]).then((data) => {
+    return db.run(query, [created_date, body.type, body.name, body.gender, body.date, body.time, body.price, body.status]).then((data) => {
         console.log('postRequest success:', data);
         db.close();
 
@@ -115,7 +114,6 @@ const postRequest = async function(req, res) {
     });
     
 }
-
 
 const getRequest = async function(req, res) {
     console.log('getRequest');
@@ -154,7 +152,5 @@ const delRequest = async function(req, res) {
         return res.status(500).json({status: 'error', message: error.toString()});
     });
 }
-
-
 
 module.exports = {users, getUser, getDocs, delDoc, postDoc, postRequest, getRequest, delRequest};
