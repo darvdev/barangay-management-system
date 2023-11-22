@@ -6,22 +6,32 @@ const print = async function(req, res) {
     const body = req.body;
 
     let content = await new Promise((resolve, reject) => {
-        fs.readFile('./server/temp/clearance.html', 'utf8', (err, data) => {
-            if (err) {
-                console.error(err);
-                reject(null);
-                return;
-            }
-            resolve(data);
-        });
+        try {
+            fs.readFile(`./server/temp/${body.type}.html`, 'utf8', (err, data) => {
+                if (err) {
+                    console.error(err);
+                    resolve(null);
+                    return;
+                }
+                resolve(data);
+            });
+        } catch (error) {
+            resolve(null);
+        }
+        
     });
 
 
     let options = { format: 'A4' };
 
-    content = content.replaceAll('{{name}}', body.name?.toUpperCase());
-    content = content.replaceAll('{{day}}', body.day);
-    content = content.replaceAll('{{month}}', body.month);
+    if (content) {
+        content = content?.replaceAll('{{name}}', body.name?.toUpperCase());
+        content = content?.replaceAll('{{day}}', body.day);
+        content = content?.replaceAll('{{month}}', body.month);
+    } else {
+        content = `Please print manually the ${body.type} of ${body.name} where issued on ${body.day} day of ${body.month} 2023`;
+    }
+    
 
     let file = { content: content };
 
