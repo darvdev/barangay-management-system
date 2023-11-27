@@ -37,8 +37,38 @@ const getDocs = async function(req, res) {
         console.log('Error getDocs:', error);
         return res.status(500).json({status: 'error', message: error.toString()});
     });
-     
 }
+
+const getProfile = async function(req, res) {
+    const db = await AsyncDatabase.open('./server/db.sqlite');
+    const query = `SELECT * FROM dashboard WHERE id = "profile"`;
+
+    return db.get(query).then((data) => {
+        console.log('getProfile success:', data);
+        db.close();
+        return res.status(200).json({data: data});
+    }).catch((error) => {
+        db.close();
+        console.log('Error getProfile:', error);
+        return res.status(500).json({status: 'error', message: error.toString()});
+    });
+}
+
+const getHistory = async function(req, res) {
+    const db = await AsyncDatabase.open('./server/db.sqlite');
+    const query = `SELECT * FROM dashboard WHERE id = "history"`;
+
+    return db.get(query).then((data) => {
+        console.log('getHistory success:', data);
+        db.close();
+        return res.status(200).json({data: data});
+    }).catch((error) => {
+        db.close();
+        console.log('Error getHistory:', error);
+        return res.status(500).json({status: 'error', message: error.toString()});
+    });
+}
+
 
 const postDoc = async function(req, res) {
     const body = req.body;
@@ -153,4 +183,46 @@ const delRequest = async function(req, res) {
     });
 }
 
-module.exports = {users, getUser, getDocs, delDoc, postDoc, postRequest, getRequest, delRequest};
+
+const putProfile = async function(req, res) {
+    const body = req.body;
+    console.log('putProfile:', body);
+
+    if (!body) {
+        return res.status(400).send({'status': 'error', 'message': 'Payload is required'});
+    }
+    
+    const query = 'UPDATE dashboard SET content=? WHERE id=?';
+
+    const db = await AsyncDatabase.open('./server/db.sqlite');
+
+    const result = await db.run(query, [body.content, 'profile']);
+
+    console.log('putProfile result:', result);
+
+    return res.status(200).json({data: result});
+
+}
+
+const putHistory = async function(req, res) {
+    const body = req.body;
+    console.log('putHistory:', body);
+
+    if (!body) {
+        return res.status(400).send({'status': 'error', 'message': 'Payload is required'});
+    }
+    
+    const query = 'UPDATE dashboard SET content=? WHERE id=?';
+
+    const db = await AsyncDatabase.open('./server/db.sqlite');
+
+    const result = await db.run(query, [body.content, 'history']);
+
+    console.log('putHistory result:', result);
+
+    return res.status(200).json({data: result});
+
+}
+
+
+module.exports = {users, getUser, getDocs, delDoc, postDoc, postRequest, getRequest, delRequest, getProfile, getHistory, putProfile, putHistory};

@@ -5,7 +5,7 @@ const express = require("express");
 const cors = require('cors')({origin: true});
 
 const { login, verifyToken } = require("./server/auth.js");
-const { getDocs, postDoc, delDoc, postRequest, getRequest, delRequest } = require("./server/db.js");
+const { getDocs, postDoc, delDoc, postRequest, getRequest, delRequest, getProfile, getHistory, putProfile, putHistory } = require("./server/db.js");
 const { print } = require("./server/print.js");
 
 
@@ -18,7 +18,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.post("/request", postRequest);
 app.get("/secured/docs", getDocs);
 
-
+app.get("/profile", getProfile);
+app.get("/history", getHistory);
 
 
 
@@ -32,9 +33,13 @@ app.post("/secured/request/print", print);
 app.delete("/secured/doc/:id", delDoc);
 app.delete("/secured/request/:id", delRequest);
 
+app.put("/secured/profile", putProfile);
+app.put("/secured/history", putHistory);
+
 //Auth
 app.post("/secured/verifyToken", verifyToken);
 app.post("/secured/login", login);
+
 
 
 
