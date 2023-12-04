@@ -126,9 +126,9 @@ const postRequest = async function(req, res) {
     const created_date = (new Date()).toISOString();
         
     const db = await AsyncDatabase.open('./server/db.sqlite');
-    const query = `INSERT INTO requests (created_date, type, name, gender, date, time, price, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+    const query = `INSERT INTO requests (created_date, type, name, phone, gender, date, time, price, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-    return db.run(query, [created_date, body.type, body.name, body.gender, body.date, body.time, body.price, body.status]).then((data) => {
+    return db.run(query, [created_date, body.type, body.name, body.phone, body.gender, body.date, body.time, body.price, body.status]).then((data) => {
         console.log('postRequest success:', data);
         db.close();
 
